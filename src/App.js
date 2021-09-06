@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+    constructor(props)
+    {
+        super(props);
+        this.state={
+            count:1,
+        };
+        this.counter=0;
+    }
+
+    reset = ()=>
+    {
+        this.counter=0;
+        this.setState({count:this.counter});
+    }
+    increment =()=>
+    {
+        this.counter = this.counter+1;
+        this.setState({count: this.counter});
+    }
+    decrement =()=>
+    {
+        this.counter = this.counter-1;
+        this.setState({count:this.counter});
+    }
+    render()
+    {
+        return (
+           <React.Fragment>
+               <p>Name:{this.props.name}</p>
+               <p>Age:{this.props.age}</p>
+               <p>Region:{this.props.region.state}</p>
+               <p >CardNumber:{this.state.count}</p>
+               <div className="but">
+               <button onClick={this.increment}>increment</button>
+               <button onClick={this.decrement}>Decrement</button>
+               <button onClick={this.reset}>Reset</button>
+               </div>
+           </React.Fragment>
+        );
+    }
+  
 }
-
 export default App;
+
